@@ -4,7 +4,7 @@ class Controller_login extends Controller {
 
     public function __construct()
     {
-        $this->model = new Model_Login();
+        $this->model = new Model_Register();
         $this->view = new View();
     }
 

@@ -1,10 +1,4 @@
 <?php
-
-	//require_once 'core/model.php';
-	//require_once 'core/view.php';
-	//require_once 'core/controller.php';
-	//require_once 'core/route.php';
-
     function myAutoload ($class_name) {
         $filename = strtolower($class_name) . '.php';
         $file = site_path . 'beznal/application/core/' . $filename;
@@ -17,5 +11,6 @@
     spl_autoload_register('myAutoload');
 
     $registry = new Registry;
+    $model = new Model();
 
     Route::start();

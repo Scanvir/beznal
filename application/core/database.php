@@ -8,7 +8,9 @@ class Database {
     public static $pass = '20082408RomashkaBila';
 
     private static function connect() {
-        $pdo = new PDO("mysql:host=".self::$host.";dbname".self::$dbname.";charset=utf8", self::$user, self::$pass);
+        $pdo = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname.";charset=utf8", self::$user, self::$pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
     }
 
     public static function query($query, $param = array()){

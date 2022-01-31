@@ -1,3 +1,6 @@
+<?php
+    print_r($data);
+?>
     <style>
         .login-form {
             width: 500px;

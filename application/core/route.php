@@ -13,7 +13,7 @@ class Route
 	static function start()
 	{
         // контроллер и действие по умолчанию
-		$controller_name = 'Main';
+		$controller_name = 'Home';
 		$action_name = 'index';
 
 		
@@ -67,8 +67,11 @@ class Route
 		
 		if(method_exists($controller, $action))
 		{
+		    if (isset($_GET))
 			// вызываем действие контроллера
-			$controller->$action();
+			    $controller->$action($_GET);
+		    else
+                $controller->$action();
 		}
 		else
 		{
