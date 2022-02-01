@@ -59,6 +59,7 @@ class Route
 			но для упрощения сразу сделаем редирект на страницу 404
 			*/
 			Route::ErrorPage404();
+			return;
 		}
 		
 		// создаем контроллер
@@ -83,9 +84,9 @@ class Route
 	
 	static function ErrorPage404()
 	{
-        $host = 'https://'.$_SERVER['HTTP_HOST'].'/';
-        header('HTTP/1.1 404 Not Found');
-		header("Status: 404 Not Found");
-		header('Location:'.$host.'404');
+        include "application/controllers/controller_info.php";
+        $controller = new Controller_info;
+        $action_name = 'action_index';
+        $controller->$action_name();
     }
 }

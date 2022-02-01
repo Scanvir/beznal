@@ -1,6 +1,6 @@
 <?php
 
-class Controller_login extends Controller {
+class Controller_Login extends Controller {
 
     public function __construct()
     {
@@ -16,16 +16,18 @@ class Controller_login extends Controller {
 
             $user = $this->model->checkUserEmail($email);
 
-            $hash = $user[0][0];
-            $userID = $user[0][1];
+            if (count($user) > 0) {
+                $hash = $user[0][0];
+                $userID = $user[0][1];
 
-            $verify = $this->model->verifyHash($password, $hash);
-            if ($verify){
-                setcookie('auth', true);
-                setcookie('userId', $userID);
-                $host = 'https://'.$_SERVER['HTTP_HOST'];
-                header('HTTP/1.1 200');
-                header('Location:' . $host . '/home');
+                $verify = $this->model->verifyHash($password, $hash);
+                if ($verify) {
+                    setcookie('auth', true);
+                    setcookie('userId', $userID);
+                    $host = 'https://' . $_SERVER['HTTP_HOST'];
+                    header('HTTP/1.1 200');
+                    header('Location:' . $host . '/home');
+                }
             }
         }
         $this->view->generate('login_view.php', 'template_view.php');

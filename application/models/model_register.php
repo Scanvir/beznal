@@ -1,6 +1,6 @@
 <?php
 
-class Model_Login extends Model
+class Model_Register extends Model
 {
 
     private $db;
@@ -34,12 +34,6 @@ class Model_Login extends Model
     public function checkPassword($password)
     {
         if (strlen($password) >= 8) return true;
-        else return false;
-    }
-
-    public function checkEmail($email)
-    {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) return true;
         else return false;
     }
 

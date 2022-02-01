@@ -1,6 +1,3 @@
-<?php
-    print_r($data);
-?>
     <style>
         .login-form {
             width: 500px;
@@ -21,26 +18,25 @@
         <input type="text" data-role="input" data-prepend="<span class='mif-envelop' style='color: #74489d; '>" placeholder="Адреса пошти:" name="email">
     </div>
     <?php
-        if ($data)
-            if ($data['isValid'] == 1){
-    ?>
-    <div class="form-group">
-        <div class="bg-green fg-white rounded">на вказану електронну пошту надіслано листа з інструкцією по відновленню пароля</div>
-    </div>
-    <?php
-            } else {
-    ?>
-    <div class="form-group">
-        <div class="bg-red fg-white rounded">електронна пошта вказана невірно</div>
-    </div>
-    <?php
+        if($data) {
+            if(array_key_exists('error', $data)){
+                $color = 'red';
+                $value = $data['error'];
+            }
+            else {
+                $color = 'green';
+                $value = $data['info'];
             }
     ?>
     <div class="form-group">
+        <div class="bg-<?php echo $color; ?> fg-white rounded">&nbsp;<?php echo $value; ?></div>
+    </div>
+    <?php
+        }
+    ?>
+    <div class="form-group">
         <button class="button secondary outline rounded" style='float: right;'>Відновити...</button>
+        <a href="/" style='float: left;'>&nbsp;&nbsp;&nbsp;На головну&nbsp;&nbsp;&nbsp;</a>
     </div>
 
 </form>
-
-<script src="/js/jquery-3.4.1.js"></script>
-<script src="/js/metro.js"></script>

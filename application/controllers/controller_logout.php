@@ -1,6 +1,6 @@
 <?php
 
-class Controller_logout extends Controller {
+class Controller_Logout extends Controller {
 
     function action_index()
     {

@@ -1,6 +1,3 @@
-<?php
-    print_r($data);
-?>
     <style>
         .login-form {
             width: 500px;
@@ -15,35 +12,39 @@
     </style>
 </head>
 <body class="h-vh-100">
-<form class="login-form" method="post">
-    <h2 class="text-light" style='text-align: center'>Вкажіть новыий пароль</h2>
-    <div class="form-group">
-        <input type="text" data-role="input" data-prepend="<span class='mif-envelop' style='color: #74489d; '>" placeholder="Адреса пошти:" name="newpassword">
-    </div>
-    <div class="form-group">
-        <input type="text" data-role="input" data-prepend="<span class='mif-envelop' style='color: #74489d; '>" placeholder="Адреса пошти:" name="confirmpassword">
-    </div>
+    <form class="login-form" action="/resetpassword/new/" method="post">
+        <h2 class="text-light" style='text-align: center'>Зміна пароля</h2>
+        <div class="form-group">
+            <input type="password" data-role="input" data-prepend="<span class='mif-envelop' style='color: #74489d; '>" placeholder="Новий пароль:" name="newpassword">
+        </div>
+        <div class="form-group">
+            <input type="password" data-role="input" data-prepend="<span class='mif-envelop' style='color: #74489d; '>" placeholder="Підтвердіть новий пароль:" name="confirmpassword">
+        </div>
     <?php
-        if ($data)
-            if ($data['isValid'] == 1){
-    ?>
-    <div class="form-group">
-        <div class="bg-green fg-white rounded">на вказану електронну пошту надіслано листа з інструкцією по відновленню пароля</div>
-    </div>
-    <?php
-            } else {
-    ?>
-    <div class="form-group">
-        <div class="bg-red fg-white rounded">електронна пошта вказана невірно</div>
-    </div>
-    <?php
+        if($data) {
+            if(array_key_exists('error', $data)){
+                $color = 'red';
+                $value = $data['error'];
             }
-    ?>
-    <div class="form-group">
-        <button class="button secondary outline rounded" style='float: right;'>Відновити...</button>
-    </div>
-
-</form>
-
-<script src="/js/jquery-3.4.1.js"></script>
-<script src="/js/metro.js"></script>
+            else if(array_key_exists('info', $data)){
+                $color = 'green';
+                $value = $data['info'];
+            }
+            else {
+                $color = 'white';
+                $value = '';
+            }
+            ?>
+            <div class="form-group">
+                <div class="bg-<?php echo $color; ?> fg-white rounded">&nbsp;<?php echo $value; ?></div>
+            </div>
+            <?php
+        }
+        ?>
+        <div class="form-group">
+            <button class="button secondary outline rounded" style='float: right;'>Відновити...</button>
+            <a href="/" style='float: left;'>&nbsp;&nbsp;&nbsp;На головну&nbsp;&nbsp;&nbsp;</a>
+        </div>
+        <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+        <input type="hidden" name="reset_hash" value="<?php echo $data['reset_hash']; ?>">
+    </form>

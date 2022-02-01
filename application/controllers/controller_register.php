@@ -1,6 +1,6 @@
 <?php
 
-class Controller_login extends Controller {
+class Controller_Register extends Controller {
 
     public function __construct()
     {
@@ -28,6 +28,6 @@ class Controller_login extends Controller {
                 header('Location:' . $host . '/home');
             }
         }
-        $this->view->generate('login_view.php', 'template_view.php');
+        $this->view->generate('register_view.php', 'template_view.php');
     }
 }
