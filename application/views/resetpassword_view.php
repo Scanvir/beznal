@@ -1,3 +1,6 @@
+<?php
+defined("DIRSEP") OR exit('А-та-та!');
+?>
     <style>
         .login-form {
             width: 500px;

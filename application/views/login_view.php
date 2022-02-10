@@ -24,6 +24,7 @@
 <div class="form-group">
     <button class="button secondary outline rounded" style='float: right;'>&nbsp;&nbsp;&nbsp;Увійти&nbsp;&nbsp;&nbsp;</button>
     <a href="/resetpassword" style='float: left;'>&nbsp;&nbsp;&nbsp;Нагадати пароль&nbsp;&nbsp;&nbsp;</a>
+    <a href="/register" style='float: left;'>&nbsp;&nbsp;&nbsp;Зареєструватись&nbsp;&nbsp;&nbsp;</a>
 </div>
 </form>
 
